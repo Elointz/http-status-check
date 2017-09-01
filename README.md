@@ -20,11 +20,9 @@ npm install http-status-check
 ```
 node index.js
 ```
-
-To show only failures in the output:
-
+Run in cron mode, only display errors, print timestamp
 ```
-node index.js --only-output-failures
+node cron.js
 ```
 
 ##Questions?
@@ -67,6 +65,7 @@ The `samplesites.js` file is heavily commented and a good starting point.
   * `excludedHeaders` - An array of headers that you expect not to be returned by the server. (For example, for security you may not want the X-Powered-By header to be returned.) If any of these headers are present then the check will be considered a failure and reported as such.
   * `followRedirect` - If a URL returns redirect status (300 to 399) then continue to follow any redirects and don't check until an non-300 series status is returned. See samplesites.js for use case and further details.
   * `expectedText` - A string or an array of strings or an array of objects. If an array of objects then each object should have a string 'text' property and an optional boolean caseSensitive property 
+  * `notExpectedText`- A string or an array of strings or an array of objects. If an array of objects then each object should have a string 'text' property and an optional boolean caseSensitive property
     * `text` - The text to find on the page
     * `caseSensitive` - true/false to indicate if the comparison should be case sensitive. Defaults to false if missing and if expectedText is a string or array of strings.
 * `concurrentRequests` - The number of sites to check at the same time. Defaults to 3 if this is missing
